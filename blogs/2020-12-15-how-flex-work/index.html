@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何让 flex item 平分空间 | 成都拓尔思前端团队</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.f6632dd8.css" as="style"><link rel="preload" href="/assets/js/app.9c141345.js" as="script"><link rel="preload" href="/assets/js/2.6a03cd93.js" as="script"><link rel="preload" href="/assets/js/16.b279700c.js" as="script"><link rel="prefetch" href="/assets/js/10.0d592072.js"><link rel="prefetch" href="/assets/js/11.db3369d9.js"><link rel="prefetch" href="/assets/js/12.d026b578.js"><link rel="prefetch" href="/assets/js/13.dea7dbc5.js"><link rel="prefetch" href="/assets/js/14.7e95609e.js"><link rel="prefetch" href="/assets/js/15.1143cf56.js"><link rel="prefetch" href="/assets/js/17.6098c2f8.js"><link rel="prefetch" href="/assets/js/18.83bcce27.js"><link rel="prefetch" href="/assets/js/19.515170a7.js"><link rel="prefetch" href="/assets/js/3.c587dd52.js"><link rel="prefetch" href="/assets/js/4.e3603d9b.js"><link rel="prefetch" href="/assets/js/5.dd66db2b.js"><link rel="prefetch" href="/assets/js/6.02057c17.js"><link rel="prefetch" href="/assets/js/7.b048b111.js"><link rel="prefetch" href="/assets/js/8.9f59f61c.js"><link rel="prefetch" href="/assets/js/9.0ba4c027.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f6632dd8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">成都拓尔思前端团队</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blogs/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/blogs/2020-12-15-how-flex-work/.html" class="nav-link">
+  开源项目
+</a></div><div class="nav-item"><a href="/website/join/" class="nav-link">
+  加入我们
+</a></div><div class="nav-item"><a href="http://www.trs.com.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  拓尔思官网
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blogs/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/blogs/2020-12-15-how-flex-work/.html" class="nav-link">
+  开源项目
+</a></div><div class="nav-item"><a href="/website/join/" class="nav-link">
+  加入我们
+</a></div><div class="nav-item"><a href="http://www.trs.com.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  拓尔思官网
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>如何让 flex item 平分空间</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="如何让-flex-item-平分空间"><a href="#如何让-flex-item-平分空间" class="header-anchor">#</a> 如何让 flex item 平分空间</h1> <p>我们来看一个示例，有如下HTML结构：</p> <section class="demo-and-code-wrapper"><div class="outer-1"><div class="a1"><div class="b1"></div></div> <div class="a2"></div></div> <style>
+  .outer-1 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-1 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+  }
+  .outer-1 .b1 {
+    width: 100px
+  }
+  .outer-1 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-1 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-1 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n  }\n  .outer-1 .b1 {\n    width: 100px\n  }\n  .outer-1 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-1\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;\n        &lt;div class=\&quot;b1\&quot;&gt;&lt;/div&gt;\n      &lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-1 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-1 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+  }
+  .outer-1 .b1 {
+    width: 100px
+  }
+  .outer-1 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-1&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;
+        &lt;div class=&quot;b1&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgBGIZbUR0d2zu7egaGPaZBZ-fnFrp6PPsGQACMN6PDtDskt7Yurm52r5YPVkA8AJhm7zpvv69bUBcGk0YLM2nBiOwICwKGDAdoIVCYXDwnAKABPWCzHAjMZTLh2OaOcwQdAUAAWrgALAAGGksLAAbniXA6cEaHnRrjAsCZ_my_hxoxgE0mXBw6wJLOOHmIAGsAOYiPgYVzsGDoZlEhzkmAQBXkiiuSZ0hla-Y87DjJWkczG805QW4kX4nCnKXargksmUrgm-lYflO4Wi8UfD3zGXym0q9CuY5QAQOnV6g1Gv2mvmey1Ya0iO1-h0C-FozGghjFHwgNCYXCGphQSokchUGiIeiAp6ko5eFhfS4_SsgFiyuUeBUwfBwchN6qtihNzAsaiYVDECDwJuGWggtHFbIH7JAA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-1</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-1 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-1 .b1</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100px
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-1 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <p>我们希望通过设置 <code>flex-grow: 1</code> 来让两个 flex item 填充均分，而结果并非如我们所愿，两个元素的区别就是一个有子元素，一个没有。查阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-grow" target="_blank" rel="noopener noreferrer">MDN文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>我们可以得知</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>CSS属性 flex-grow设置了一个flex项主尺寸的flex增长系数。它指定了flex容器中剩余空间的多少应该分配给项目（flex增长系数）。</p> <p>主尺寸是项的宽度或高度，这取决于flex-direction值。</p></div> <p>其中有一个关键词叫 <code>主尺寸</code>，那么如何确定这个主尺寸呢？通过<a href="https://www.w3.org/TR/css-flexbox/#flex-basis-property" target="_blank" rel="noopener noreferrer">W3C<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>我们可以找到</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>flex-basis is relative to the flex container’s inner main size</p></div> <p>因此我们最终明白可以通过设置 <code>flex-basis</code> 来设置 flex item 的主尺寸，于是我们修改代码如下</p> <section class="demo-and-code-wrapper"><div class="outer-2"><div class="a1"><div class="b1"></div></div> <div class="a2"></div></div> <style>
+  .outer-2 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-2 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .outer-2 .b1 {
+    width: 100px
+  }
+  .outer-2 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-2 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-2 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }\n  .outer-2 .b1 {\n    width: 100px\n  }\n  .outer-2 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-2\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;\n        &lt;div class=\&quot;b1\&quot;&gt;&lt;/div&gt;\n      &lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-2 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-2 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .outer-2 .b1 {
+    width: 100px
+  }
+  .outer-2 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-2&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;
+        &lt;div class=&quot;b1&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgAmIZbUR0d2zu7egaGPAEYZ-PmuRa6ejz7BkAAjTZBo8O0OyVmd3evOu5295cPVkA9pi6ub59-nq1UFcGk0YLM2nBiOwICwKBDgdooTC4QjwnAKABPWCzHAjMZTLh2OaOcwQdAUAAWrgALAAGOksLAAbm2HTgjQ8mNcYFgLP82X8eNGMAmky4OA2RO2Jw8xAA1gBzER8DCudgwdCskkOSkwCCKykUVzrBlM7XzXnYcbK0jmE0WxxWrDjWVwCBpLh0x2CknCgninBnaU6rhkinUrimxlYAVC_GiwmS8XE-ayhW21XoVwnKACR26_WG41Rs380POm0ie1RgtCPmuw4e1zeuOIjHY8EMYo-EBoTC4I1MKCVEjkKg0RD0YE3Ljk45eFgzAG3HsgFhy-UeRUwfBwcij6oTiijzAsaiYVDECDwUeGWhgjHFbIv7JAA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-2</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-2 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-2 .b1</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100px
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-2 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <p>可以看到 a1 和 a2 在 <code>flex-basis</code> 的加持下宽度相等了，事情到这还没结束，我们接着将 <code>b1</code> 的宽度设为 300px</p> <section class="demo-and-code-wrapper"><div class="outer-3"><div class="a1"><div class="b1"></div></div> <div class="a2"></div></div> <style>
+  .outer-3 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-3 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .outer-3 .b1 {
+    width: 300px
+  }
+  .outer-3 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-3 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-3 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }\n  .outer-3 .b1 {\n    width: 300px\n  }\n  .outer-3 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-3\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;\n        &lt;div class=\&quot;b1\&quot;&gt;&lt;/div&gt;\n      &lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-3 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-3 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .outer-3 .b1 {
+    width: 300px
+  }
+  .outer-3 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-3&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;
+        &lt;div class=&quot;b1&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgBmIZbUR0d2zu7egaGPAEYZ-PmuRa6ejz7BkAAjTZBo8O0OyVmd3evOu5295cPVkA8AJhmrm-e_k9Wqgrg0mjBZm04MR2BAWBRISDtNDYfDEeE4BQAJ6wWY4EZjKZcOxzRzmCDoCgAC1cABYAAz0lhYADc2w6cEaHixrjAsFZ_my_nxoxgE0mXBwG2J2xOHmIAGsAOYiPgYVzsGDoNmkhxUmAQJVUiiudaM5k6-Z87DjFWkcymy2Oa1YcZyuAQNJcelOoWkkWEiU4M4y3VccmUmlcSbmrCC4UEsVEqVfUPzOWKu1q9CuE5QAROvUGo0mrhmpkCsMu20iB1lwtCfluw6e1w--NIzE4iEMYo-EBoTC4Y1MKCVEjkKg0RD0EE3LgU45eFi_R63PsgFjyhUeJUwfBwcjj6pTijjzAsaiYVDECDwceGWjgzHFbJv7JAA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-3</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-3 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-3 .b1</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 300px
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-3 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <p>你会发现，在 a1 的子元素宽度过大（大于平均宽度）的情况下，仍然不会均分，<code>flex-basis</code> 失效了吗？我们一定是忽略了某些细节。接着我们找到<a href="https://www.w3.org/TR/css-flexbox/#main-size" target="_blank" rel="noopener noreferrer">W3C关于Man Size 的描述<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，其中有这么一句</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>its min and max main size properties are its min-width/max-width or min-height/max-height properties</p></div> <p>说明不光存在 main size 主尺寸，还存在最小和最大主尺寸，会对最终的宽度造成影响，效果和 width 与 min/max-width 一样，也就是说这样里面必然存在一个优先级，<a href="https://mastery.games/post/the-difference-between-width-and-flex-basis/" target="_blank" rel="noopener noreferrer">相关文章<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>中有提到这样的一个优先级规则</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>content &gt; width &gt; flex-basis (limted by max|min-width)</p></div> <p>按照这个规则推测，之所以在设置了 <code>flex-basis</code> 相等之后仍然没有均分的唯一可能就是a1和b1自身存在 <code>min-width</code>，打开F12我们可以看到他俩的 min-width 默认都为 <code>auto</code>，再结合 W3C关于min-width的描述</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>Note: The auto keyword, representing an automatic minimum size, is the new initial value of the min-width and min-height properties. The keyword was previously defined in this specification, but is now defined in the CSS Sizing module.</p> <p>To provide a more reasonable default minimum size for flex items, the used value of a main axis automatic minimum size on a flex item that is not a scroll container is a content-based minimum size; for scroll containers the automatic minimum size is zero, as usual.</p></div> <p>可以看到，在非滚动的容器下，auto 实际上等于 <code>content-based minimum size</code>，基于内容的最小宽度又是啥呢，接着看解释</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>In general, the content-based minimum size of a flex item is the smaller of its content size suggestion and its specified size suggestion.</p></div> <p>到此便可以解释最后一个示例了，由于 a1 的字元素 b1 宽度为 300px，因此 a1 的 content size（内容宽度）就等于 300px，由于 a1 本身没有指定 width 所以 min-width 就是 300px，先通过 <code>flex-basis</code> 和 <code>flex-grow</code> 计算出每个flex item的宽度，然后再和各自的 min-width 做一个交叉，所以这个计算过程就是：</p> <ul><li>a1 和 b1 的 flex-basis 为 0</li> <li>剩余空间为 <code>400 - 0</code> 分配到 a1 和 b1 的宽度均为 200px</li> <li>a1 的最终宽度 = 0 + 200px = 200px</li> <li>由于 a1 本身有 min-width 300px，大于 200px，所以把 a1 重置为 300px</li> <li>b1 = 400 - 300 = 100px</li></ul> <p>为了验证上面的猜想，我们可以改动一下代码</p> <section class="demo-and-code-wrapper"><div class="outer-4"><div class="a1"><div class="b1"></div></div> <div class="a2"></div></div> <style>
+  .outer-4 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-4 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 250px;
+  }
+  .outer-4 .b1 {
+    width: 300px
+  }
+  .outer-4 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-4 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-4 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 250px;\n  }\n  .outer-4 .b1 {\n    width: 300px\n  }\n  .outer-4 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-4\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;\n        &lt;div class=\&quot;b1\&quot;&gt;&lt;/div&gt;\n      &lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-4 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-4 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 250px;
+  }
+  .outer-4 .b1 {
+    width: 300px
+  }
+  .outer-4 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-4&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;
+        &lt;div class=&quot;b1&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgAWIZbUR0d2zu7egaGPAEYZ-PmuRa6ejz7BkAAjTZBo8O0OyVmd3evOu5295cPVkA8AJhmrm-e_k9Wqgrg0mjBZm04MR2BAWBRISDtNDYfDEeE4BQAJ6wWY4EZjKZcOxzRzmCDoCgAC1ckwADHSWFgANzbDpwRoeLGuMCwFn-bL-fGjGATSZcHAbYnbE4eYgAawA5iI-BhXOwYOhWaSHFSYBBFVSKK51gymdr5rzsONlaRzCaLY4rVhxrK4BA0lwvgBWRn80mC0nCwninBnaU6rjkyk0rgAZjNWAFQoJoqJkq-EfmsoVttV6FcJygAkduv1huNXFNftLQj5NpE9qrtedrsOHtcdMdgaumJxEIYxR8IDQmFwRqYUEqJHIVBoiHoIJuXApxy8LF-j1uQ5ALDl8o8ipg-Dg5Gn1TnFGnmBY1EwqGIEHg08MtHBmOK2S_2SAA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-4</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-4 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 250px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-4 .b1</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 300px
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-4 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <p>同样分析一下这个过程:</p> <ul><li>a1 的 flex-basis 为 250， b1 的 flex-basis 为 0</li> <li>剩余空间为 <code>400 - 0 - 250 = 150</code> 分配到 a1 和 b1 的宽度均为 150 / 2 = 75px</li> <li>a1 的最终宽度 = 250 + 75 = 325px</li> <li>由于 a1 本身有 min-width 300px，但是小于 325，所以忽略</li> <li>b1 = 400 - 325 = 75px</li></ul> <p>当然也可以把 flex-basis 换成 width，因为在没有设置 flex-basis 的情况下，默认等于width</p> <section class="demo-and-code-wrapper"><div class="outer-4"><div class="a1"><div class="b1"></div></div> <div class="a2"></div></div> <style>
+  .outer-4 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-4 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    width: 250px;
+  }
+  .outer-4 .b1 {
+    width: 300px
+  }
+  .outer-4 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-4 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-4 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n    width: 250px;\n  }\n  .outer-4 .b1 {\n    width: 300px\n  }\n  .outer-4 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-4\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;\n        &lt;div class=\&quot;b1\&quot;&gt;&lt;/div&gt;\n      &lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-4 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-4 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    width: 250px;
+  }
+  .outer-4 .b1 {
+    width: 300px
+  }
+  .outer-4 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-4&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;
+        &lt;div class=&quot;b1&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgAWIZbUR0d2zu7egaGPAEYZ-PmuRa6ejz7BkAAjTZBo8O0OyVmd3evOu5295cPVkA8AJhmrm-e_k9Wqgrg0mjBZm04MR2BAWBRISDtNDYfDEeE4BQAJ6wWY4EZjKZcOxzRzmCDoCgAC1ckwADHSWFgANzbDpwRoeLGuMCwFn-bL-fGjGATSZcHAbYnbE4eYgAawA5iI-BhXOwYOhWaSHFSYBBFVSKK51gymdr5rzsONlaRzCaLWSKdTXF8AKyM_mkwWk4WE8U4M7SnVccmUmlcADMZqwAqFBNFRMlX2D81lCttqvQrhOUAEjt1-sNxq4ps9BaEfJtIntpYrVqw41lcAgaS4dMdPqumJxEIYxR8IDQmFwRqYUEqJHIVBoiHoIJuXApxy8LF-j1uA5ALDl8o8ipg-Dg5En1RnFEnmBY1EwqGIEHgk8MtHBmOK2Q_2SAA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-4</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-4 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 250px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-4 .b1</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 300px
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-4 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <div class="custom-block warning"><p class="custom-block-title">WARNING</p> <p>因此最终每个元素宽度的计算过程就是</p> <ul><li>1、根据 flex-basis 计算出剩余空间</li> <li>2、结合 flex-grow 计算要分配给每个元素的剩余空间</li> <li>3、用 flex-basis + 分配给自己的剩余空间得出每个空间的预计宽度，等价于 <code>width</code> 属性</li> <li>4、结合计算出的 min-width 和 max-width 渲染出最终的宽度（此处涉及到 width与min/max-width的计算规则）</li></ul></div> <p>综上，我们可以得出</p> <div class="custom-block danger"><p class="custom-block-title">WARNING</p> <p>min-width 只是限制 flex item 的最终宽度，而没有参与到剩余空间的计算。剩余空间永远是参照 flex-basis 去计算的。</p></div> <p>那么回到一开始的问题，如何让 flex item 平分其实就很简单了，只需要保证 a1 的 <code>min-width</code> 为 0 即可</p> <section class="demo-and-code-wrapper"><div class="outer-5"><div class="a1"><div class="b1"></div></div> <div class="a2"></div></div> <style>
+  .outer-5 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-5 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+  }
+  .outer-5 .b1 {
+    width: 300px
+  }
+  .outer-5 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-5 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-5 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n    min-width: 0;\n  }\n  .outer-5 .b1 {\n    width: 300px\n  }\n  .outer-5 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-5\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;\n        &lt;div class=\&quot;b1\&quot;&gt;&lt;/div&gt;\n      &lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-5 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-5 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+  }
+  .outer-5 .b1 {
+    width: 300px
+  }
+  .outer-5 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-5&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;
+        &lt;div class=&quot;b1&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgBWIZbUR0d2zu7egaGPAEYZ-PmuRa6ejz7BkAAjTZBo8O0OyVmd3evOu5295cPVkA8AJhmrm-e_k9Wqgrg0mjBZm04MR2BAWBRISDtNDYfDEeE4BQAJ6wWY4EZjKZcOxzRzmCDoCgAC1cABYAAz0lhYADc2w6cEaHixrjAsFZ_my_nxoxgE0mXBwG2J2xOHmIAGsAOYiPgYVzsGDoNmkhxUmAQJVUiiudaM5k6-Z87DjFWkcymy2Oa1YcZyuAQNJcelOhxMNDjcmUmnep1C0kiwkSnBnGW6rhB6muADM5qwguFBLFRKlXzj8zlirtavQrhOUAEvq4-sNxtNaarLttIgdXHWjf5bsOntcPozSMxOIhDGKPhAaEwuGNTCglRI5CoNEQ9BBNy4FOOXhYv0et1HIBY8oVHiVMHwcHIc-qi4oc8wLGomFQxAg8Dnhlo4MxxWyv-yQA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-5</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-5 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">min-width</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-5 .b1</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 300px
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-5 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <p>当然可以设置 <code>width: 0</code> 因为根据上面的 min-width 计算规则，手动指定了 width 的值就会取和他内容宽度相比的最小值，也就是 0</p> <section class="demo-and-code-wrapper"><div class="outer-6"><div class="a1"><div class="b1"></div></div> <div class="a2"></div></div> <style>
+  .outer-6 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-6 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+    width: 0;
+  }
+  .outer-6 .b1 {
+    width: 300px
+  }
+  .outer-6 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-6 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-6 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n    width: 0;\n  }\n  .outer-6 .b1 {\n    width: 300px\n  }\n  .outer-6 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-6\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;\n        &lt;div class=\&quot;b1\&quot;&gt;&lt;/div&gt;\n      &lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-6 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-6 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+    width: 0;
+  }
+  .outer-6 .b1 {
+    width: 300px
+  }
+  .outer-6 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-6&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;
+        &lt;div class=&quot;b1&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgA2IZbUR0d2zu7egaGPAEYZ-PmuRa6ejz7BkAAjTZBo8O0OyVmd3evOu5295cPVkA8AJhmrm-e_k9Wqgrg0mjBZm04MR2BAWBRISDtNDYfDEeE4BQAJ6wWY4EZjKZcOxzRzmCDoCgAC1cABYAAz0lhYADc2w6cEaHixrjAsFZ_my_nxoxgE0mXBwG2J2xOHmIAGsAOYiPgYVzsGDoNmkhxUmAQJVUiiudaM5k6-Z87DjFWkcymy2Oa1YcZyuAQNJcelOhzkyk071OoWkkWEiU4M4y3Vcf3U1wAZnNWEFwoJYqJUq-0fmcsVdrV6FcJygAl9XH1huNpuT5ZdtpEDq46zr_Ldh09rh9qaRmJxEIYxR8IDQmFwxqYUEqJHIVBoiHoIJuXApxy8LF-j1uQ5ALHlCo8Spg-Dg5Gn1TnFGnmBY1EwqGIEHg08MtHBmOK2S_2SAA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-6<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-6</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-6 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-6 .b1</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 300px
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-6 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <p>另外一个解决方式就是让 a1 滚动起来，因为 <code>for scroll containers the automatic minimum size is zero</code></p> <section class="demo-and-code-wrapper"><div class="outer-7"><div class="a1"><div class="b1"></div></div> <div class="a2"></div></div> <style>
+  .outer-7 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-7 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+    overflow-x: auto;
+  }
+  .outer-7 .b1 {
+    width: 300px
+  }
+  .outer-7 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-7 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-7 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n    overflow-x: auto;\n  }\n  .outer-7 .b1 {\n    width: 300px\n  }\n  .outer-7 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-7\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;\n        &lt;div class=\&quot;b1\&quot;&gt;&lt;/div&gt;\n      &lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-7 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-7 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+    overflow-x: auto;
+  }
+  .outer-7 .b1 {
+    width: 300px
+  }
+  .outer-7 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-7&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;
+        &lt;div class=&quot;b1&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgB2IZbUR0d2zu7egaGPAEYZ-PmuRa6ejz7BkAAjTZBo8O0OyVmd3evOu5295cPVkA8AJhmrm-e_k9Wqgrg0mjBZm04MR2BAWBRISDtNDYfDEeE4BQAJ6wWY4EZjKZcOxzRzmCDoCgAC1cABYAAz0lhYADc2w6cEaHixrjAsFZ_my_nxoxgE0mXBwG2J2xOHmIAGsAOYiPgYVzsGDoNmkhxUmAQJVUiiudaM5k6-Z87DjFWkcymy2Oa1YcZyuAQNJcelOhykSRivn28ZYVweUakJ1C0kiwkSnBnGW6rjkyk0rgAZnNWEFwoJYqJUq-SfmcsVdrV6FcJygAl9XH1huNpuz9ZdtpEDq46zb_Ldh09rh9uaRmJxEIYxR8IDQmFwxqYUEqJHIVBoiHoIJuXApxy8LF-j1uU5ALHlCo8Spg-Dg5GX1TXFGXmBY1EwqGIEHgy8MtHBmOKbIgOyIA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-7<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-7</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-7 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">overflow-x</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-7 .b1</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 300px
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-7 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <p>如果有多个 flex item 呢</p> <section class="demo-and-code-wrapper"><div class="outer-14"><div class="a1"></div> <div class="a2"></div> <div class="a3"></div></div> <style>
+  .outer-14 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-14 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 200px;
+    min-width: 250px;
+  }
+  .outer-14 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 20px;
+  }
+  .outer-14 .a3 {
+    background: green;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-14 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-14 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 200px;\n    min-width: 250px;\n  }\n  .outer-14 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 20px;\n  }\n  .outer-14 .a3 {\n    background: green;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-14\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;&lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n      &lt;div class=\&quot;a3\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-14 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-14 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 200px;
+    min-width: 250px;
+  }
+  .outer-14 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 20px;
+  }
+  .outer-14 .a3 {
+    background: green;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-14&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;a3&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgBGABYhltRHR3bO7t6BoY9JufDtDsl5xYdlrp6PPsGQDwAmbd3Og8Pj1bP1y4BmW72Hna_W1B2Gk0YPM2nBiOwICwKCD_towRCoTDwnAKABPWDzHAjMZTaZcOwLRzmCDoCgAC1c0wADFSWFgANzxLgdOCNDyo1xgWAM_zZfxY0YwCYzLg4Tb4pkAIw8xAA1gBzER8DCudgwdCMwkOMkwCDyskUVyTGl0zWLLnYcaK0jmI1mxwWrDjaVwCBpLhXE08rVcJhocbE0kUj0AVlp3ocfMJApxIrFVwlPulcutyvQrklUAE9u1uv1hq4xvDOaE3KtIlthZLjudZzdrk9pt5_OxQtxoo8b0Ti2TCqVKq4ipg1BLOr1BqNXurZetlcm08tLvrXCp9qjOxR6OBDGKPhAaEwuANTCglRI5CoNEQ9H-ey4JIuXhYn3uu5ALBlso88pg-Dg5DPapLwoM9MBYahMFQYgIHgM9DFoIEUWKbIUOyIA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-14<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-14</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-14 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">min-width</span><span class="token punctuation">:</span> 250px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-14 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-14 .a3</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <p>推导一下过程</p> <ul><li>剩余空间 = (400 - 200 - 20 - 0) = 180</li> <li>3个 item 平分 180 / 3 = 60</li> <li>a1 = 60 + 200 = 260 &gt; 250 取 260</li> <li>a2 = 60 + 20 = 80</li> <li>a3 = 60</li></ul> <p>如果 a1 算出来的宽度比 min-width 小呢？</p> <section class="demo-and-code-wrapper"><div class="outer-15"><div class="a1"></div> <div class="a2"></div> <div class="a3"></div></div> <style>
+  .outer-15 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-15 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 80px;
+    min-width: 250px;
+  }
+  .outer-15 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 20px;
+  }
+  .outer-15 .a3 {
+    background: green;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+</style> <div class="code-control" style="top:0px;cursor:pointer;"><span class="control-btn" style="display:;">
+            hide code
+            <i class="arrow-icon" style="transform:rotate(0);"></i></span> <div class="online-wrapper"><form target="_blank" action="https://codepen.io/pen/define" method="post" class="demo-and-code-online-edit-wrapper"><input type="hidden" name="data" value="{&quot;js&quot;:&quot;new Vue({\n\tel: '#app', \n\t\n})&quot;,&quot;css&quot;:&quot;.outer-15 {\n    width: 400px;\n    display: flex;\n  }\n  .outer-15 .a1 {\n    background: red;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 80px;\n    min-width: 250px;\n  }\n  .outer-15 .a2 {\n    background: blue;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 20px;\n  }\n  .outer-15 .a3 {\n    background: green;\n    height: 100px;\n    flex-grow: 1;\n    flex-basis: 0;\n  }&quot;,&quot;html&quot;:&quot;&lt;div id=\&quot;app\&quot;&gt;\n\n&lt;div class=\&quot;outer-15\&quot;&gt;\n      &lt;div class=\&quot;a1\&quot;&gt;&lt;/div&gt;\n      &lt;div class=\&quot;a2\&quot;&gt;&lt;/div&gt;\n      &lt;div class=\&quot;a3\&quot;&gt;&lt;/div&gt;\n  &lt;/div&gt;\n\n&lt;/div&gt;&quot;,&quot;layout&quot;:&quot;left&quot;,&quot;editors&quot;:&quot;101&quot;,&quot;js_external&quot;:&quot;https://unpkg.com/vue/dist/vue.js&quot;,&quot;css_external&quot;:&quot;&quot;,&quot;js_pre_processor&quot;:&quot;babel&quot;}"> <!----> <!----> <button type="submit" data-tip="Codepen"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve"><g><path d="M250.001,0C111.927,0,0,111.927,0,250.001C0,388.077,111.927,500,250.001,500C388.073,500,500,388.077,500,250.001
+        C500,111.927,388.073,0,250.001,0z M250.001,458.943c-115.212,0-208.941-93.733-208.941-208.942
+        c0-115.208,93.729-208.941,208.941-208.941c115.208,0,208.938,93.733,208.938,208.941
+        C458.939,365.21,365.21,458.943,250.001,458.943z"></path> <path d="M404.462,201.172c-0.028-0.195-0.076-0.382-0.109-0.577c-0.065-0.374-0.135-0.748-0.232-1.114
+        c-0.057-0.22-0.138-0.431-0.206-0.642c-0.106-0.326-0.212-0.651-0.342-0.968c-0.091-0.22-0.196-0.439-0.297-0.651
+        c-0.14-0.3-0.285-0.593-0.452-0.877c-0.122-0.212-0.251-0.416-0.377-0.618c-0.18-0.277-0.362-0.546-0.562-0.806
+        c-0.146-0.194-0.3-0.39-0.454-0.577c-0.212-0.243-0.432-0.487-0.664-0.716c-0.174-0.178-0.346-0.357-0.528-0.521
+        c-0.244-0.219-0.496-0.431-0.752-0.633c-0.198-0.155-0.395-0.31-0.602-0.456c-0.078-0.049-0.146-0.114-0.22-0.163L257.369,97.656
+        c-4.464-2.976-10.274-2.976-14.738,0l-141.295,94.196c-0.073,0.049-0.142,0.114-0.219,0.163c-0.208,0.146-0.403,0.301-0.598,0.456
+        c-0.26,0.203-0.512,0.415-0.752,0.633c-0.187,0.164-0.357,0.342-0.533,0.521c-0.231,0.229-0.451,0.473-0.658,0.716
+        c-0.159,0.188-0.313,0.383-0.459,0.577c-0.195,0.26-0.383,0.529-0.557,0.806c-0.134,0.203-0.26,0.406-0.382,0.618
+        c-0.163,0.284-0.309,0.577-0.451,0.877c-0.102,0.211-0.208,0.431-0.297,0.651c-0.13,0.317-0.236,0.642-0.341,0.968
+        c-0.07,0.211-0.146,0.422-0.208,0.642c-0.097,0.366-0.162,0.74-0.231,1.114c-0.032,0.195-0.081,0.382-0.106,0.577
+        c-0.077,0.569-0.122,1.146-0.122,1.732v94.197c0,0.585,0.044,1.162,0.122,1.74c0.025,0.188,0.074,0.382,0.106,0.568
+        c0.069,0.374,0.134,0.748,0.231,1.114c0.062,0.22,0.138,0.432,0.208,0.643c0.105,0.324,0.211,0.65,0.341,0.975
+        c0.089,0.222,0.195,0.433,0.297,0.645c0.143,0.3,0.289,0.592,0.451,0.885c0.122,0.204,0.248,0.406,0.382,0.61
+        c0.174,0.276,0.362,0.545,0.557,0.806c0.146,0.203,0.301,0.391,0.459,0.577c0.208,0.243,0.427,0.488,0.658,0.716
+        c0.175,0.178,0.346,0.357,0.533,0.52c0.24,0.221,0.492,0.432,0.752,0.635c0.195,0.155,0.391,0.31,0.598,0.454
+        c0.077,0.05,0.146,0.115,0.219,0.163l141.295,94.197c2.231,1.487,4.802,2.236,7.371,2.236c2.566,0,5.135-0.749,7.368-2.236
+        l141.295-94.197c0.074-0.048,0.142-0.113,0.22-0.163c0.207-0.145,0.403-0.299,0.602-0.454c0.256-0.203,0.508-0.414,0.752-0.635
+        c0.183-0.162,0.354-0.342,0.528-0.52c0.232-0.228,0.452-0.473,0.664-0.716c0.154-0.187,0.308-0.374,0.454-0.577
+        c0.2-0.261,0.383-0.529,0.562-0.806c0.126-0.204,0.255-0.406,0.377-0.61c0.167-0.293,0.312-0.585,0.452-0.885
+        c0.101-0.212,0.206-0.423,0.297-0.645c0.13-0.324,0.235-0.65,0.342-0.975c0.068-0.211,0.149-0.423,0.206-0.643
+        c0.098-0.366,0.167-0.74,0.232-1.114c0.033-0.187,0.081-0.381,0.109-0.568c0.073-0.578,0.119-1.155,0.119-1.74v-94.197
+        C404.581,202.318,404.535,201.741,404.462,201.172z M263.286,133.533l104.088,69.387l-46.493,31.103l-57.595-38.527V133.533z
+         M236.715,133.533v61.963l-57.592,38.527l-46.497-31.103L236.715,133.533z M121.99,227.771l33.238,22.231l-33.238,22.233V227.771z
+         M236.715,366.471l-104.088-69.388l46.497-31.094l57.592,38.52V366.471z M250.001,281.431l-46.988-31.429l46.988-31.428
+        l46.985,31.428L250.001,281.431z M263.286,366.471v-61.962l57.595-38.52l46.493,31.094L263.286,366.471z M378.01,272.234
+        l-33.233-22.233l33.233-22.231V272.234z"></path></g></svg></button></form><form target="_blank" action="https://jsfiddle.net/api/post/library/pure" method="post" class="demo-and-code-online-edit-wrapper"><!----> <input type="hidden" name="js" value=""> <input type="hidden" name="css" value=".outer-15 {
+    width: 400px;
+    display: flex;
+  }
+  .outer-15 .a1 {
+    background: red;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 80px;
+    min-width: 250px;
+  }
+  .outer-15 .a2 {
+    background: blue;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 20px;
+  }
+  .outer-15 .a3 {
+    background: green;
+    height: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }"> <input type="hidden" name="html" value="&lt;div class=&quot;outer-15&quot;&gt;
+      &lt;div class=&quot;a1&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;a2&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;a3&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;"> <input type="hidden" name="panel_js" value="3"> <input type="hidden" name="resources" value="https://unpkg.com/vue/dist/vue.js"> <!----> <button type="submit" data-tip="JSFiddle"><svg t="1547088289967" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1952" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M1028.571429 441.142857q63.428571 26.285714 102.571428 83.142857T1170.285714 650.857143q0 93.714286-67.428571 160.285714T940 877.714286q-2.285714 0-6.571429-0.285715t-6-0.285714H232q-97.142857-5.714286-164.571429-71.714286T0 645.142857q0-62.857143 31.428571-116t84-84q-6.857143-22.285714-6.857142-46.857143 0-65.714286 46.857142-112t113.714286-46.285714q54.285714 0 98.285714 33.142857 42.857143-88 127.142858-141.714286t186.571428-53.714285q94.857143 0 174.857143 46T982.571429 248.571429t46.571428 172q0 3.428571-0.285714 10.285714t-0.285714 10.285714zM267.428571 593.142857q0 69.714286 48 110.285714t118.857143 40.571429q78.285714 0 137.142857-56.571429-9.142857-11.428571-27.142857-32.285714T519.428571 626.285714q-38.285714 37.142857-82.285714 37.142857-31.428571 0-53.428571-19.142857T361.714286 594.285714q0-30.285714 22-49.714285t52.285714-19.428572q25.142857 0 48.285714 12t41.714286 31.428572 37.142857 42.857142 39.428572 46.857143 44 42.857143 55.428571 31.428572 69.428571 12q69.142857 0 116.857143-40.857143T936 594.857143q0-69.142857-48-109.714286t-118.285714-40.571428q-81.714286 0-137.714286 55.428571l53.142857 61.714286q37.714286-36.571429 81.142857-36.571429 29.714286 0 52.571429 18.857143t22.857143 48q0 32.571429-21.142857 52.285714t-53.714286 19.714286q-24.571429 0-47.142857-12t-41.142857-31.428571-37.428572-42.857143-39.714286-46.857143-44.285714-42.857143-55.142857-31.428571T434.285714 444.571429q-69.714286 0-118.285714 40.285714T267.428571 593.142857z" p-id="1953"></path></svg></button></form><form target="_blank" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" class="demo-and-code-online-edit-wrapper"><!----> <!----> <input type="hidden" name="parameters" value="N4IgZglgNgpgziAXKCA7AJjAHgOgFYLIgDGA9qgC4yVIgA6qEAtgA6kBOFABAGoCuMLmHakmXAOQA3AeIbM2nLgEEWLISLHicAehUsc0mLNQNUMAO68BACmAMuDrjCiIJAYgCGq8QBp7jqlYoDypXcQAePW0APl9_BzJWcmoKOFdgZVUuAF8_VGyAShBckD0DASRQMkoU2nDAlmCqaIYGcPQISS5iYLg4AF46EFI-KnYAWgBGAFYhltRHR3bO7t6BoY9JufDtDsl5xYdlrp6PPsGQDwAmbd3Og8Pj1bP1y4BmW72Hna_W1B2Gk0YPM2nBiOwICwKCD_towRCoTDwnAKABPWDzHAjMZTaZcOwLRzmCDoCgAC1cABYAAzUlhYADc8S4HTgjQ8qNcYFgjP82X8WNGMAmMy4OE2-OZACMPMQANYAcxEfAwrnYMHQTMJDjJMAgCrJFFck1p9K1i252HGStI5mN5sclqw4xlcAgaS4AA46bztVwmGhxsTSRSuFdpj6HfzCYKcaLxVdJX6ZfKbSr0K4pVABA6dXqDUauCbI8yndaRHai7mhDyXWd3a4riXCdGHLHhbixR43knFinFcrVVwlTBqNXdfrDcbTb6LbWbZXJtWy66G1xqVG2nC0RiGMUfCA0JhcIamFBKiRyFQaIh6P89lwSRcvCxPvd9yAWLK5R4FTB8HA5AXtU14UBemAsNQmCoMQEDwBehi0ECKLFNkaHZEAA"> <input type="hidden" name="query" value="module=App.vue"> <!----> <!----> <button type="submit" data-tip="CodeSandbox"><svg t="1547088313123" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2783" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon"><path d="M737.828571 166.857143l0.457143-0.228572h0.228572L512 36.571429 285.6 166.628571h-0.228571l0.8 0.342858L100 274.285714v475.428572L512 987.428571l412-237.714285V274.285714l-186.171429-107.428571zM478.514286 890.971429L314.971429 796.571429V637.028571L166.857143 552.914286V353.028571l311.657143 179.771429v358.171429zM199.085714 294.285714l153.942857-88.914285 158.742858 91.085714 158.971428-91.314286 154.514286 89.142857-313.028572 180.571429-313.142857-180.571429zM857.142857 553.485714l-147.2 83.542857v158.971429l-164.457143 94.857143V533.028571L857.142857 353.257143v200.228571z" p-id="2784"></path></svg></button></form></div></div> <div class="code-wrapper" style="max-height:9999px;"><div class="language-vue extra-class"><pre v-pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer-15<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.outer-15</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-15 .a1</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+    <span class="token property">min-width</span><span class="token punctuation">:</span> 250px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-15 .a2</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.outer-15 .a3</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+</code></pre></div></div></section> <p>计算过程就变成了</p> <ul><li>剩余空间 = (400 - 80 - 20 - 0) = 300</li> <li>3个 item 平分 300 / 3 = 100</li> <li>a1 = 100 + 80 = 180 &lt; 250 取 250</li></ul> <p>到了 a2 这里，a2 = 100 + 20 = 80，那么明显是不对的，因为 a1 已经占用了多余的空间，所以就应该按照剩下的空间（400 - 250）计算了</p> <ul><li>除开a1的剩余空间 = 150 - 20 - 0 = 130</li> <li>a2 和 a3 平分 130 / 2 = 65</li> <li>a2 = 65 + 20 = 85</li> <li>a3 = 65</li></ul> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>由此可以得出， flex item 分为两种，一种是 min-width &gt; main width 第二种是 min-width &lt;= main width。 这个时候可以先把第一种item去除，因为他们已经被强制变成min-width宽度了，从容器总宽度剪掉他们的宽度之和，然后剩下的用来计算第二种item的空间分配。</p></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">1/20/2021, 10:53:19 AM</span></div></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.9c141345.js" defer></script><script src="/assets/js/2.6a03cd93.js" defer></script><script src="/assets/js/16.b279700c.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>通过axios-mock-adapter做接口模拟 | 成都拓尔思前端团队</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.f6632dd8.css" as="style"><link rel="preload" href="/assets/js/app.9c141345.js" as="script"><link rel="preload" href="/assets/js/2.6a03cd93.js" as="script"><link rel="preload" href="/assets/js/11.db3369d9.js" as="script"><link rel="prefetch" href="/assets/js/10.0d592072.js"><link rel="prefetch" href="/assets/js/12.d026b578.js"><link rel="prefetch" href="/assets/js/13.dea7dbc5.js"><link rel="prefetch" href="/assets/js/14.7e95609e.js"><link rel="prefetch" href="/assets/js/15.1143cf56.js"><link rel="prefetch" href="/assets/js/16.b279700c.js"><link rel="prefetch" href="/assets/js/17.6098c2f8.js"><link rel="prefetch" href="/assets/js/18.83bcce27.js"><link rel="prefetch" href="/assets/js/19.515170a7.js"><link rel="prefetch" href="/assets/js/3.c587dd52.js"><link rel="prefetch" href="/assets/js/4.e3603d9b.js"><link rel="prefetch" href="/assets/js/5.dd66db2b.js"><link rel="prefetch" href="/assets/js/6.02057c17.js"><link rel="prefetch" href="/assets/js/7.b048b111.js"><link rel="prefetch" href="/assets/js/8.9f59f61c.js"><link rel="prefetch" href="/assets/js/9.0ba4c027.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f6632dd8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">成都拓尔思前端团队</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blogs/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/blogs/2020-10-10-axios-mock-adapter/.html" class="nav-link">
+  开源项目
+</a></div><div class="nav-item"><a href="/website/join/" class="nav-link">
+  加入我们
+</a></div><div class="nav-item"><a href="http://www.trs.com.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  拓尔思官网
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blogs/" class="nav-link router-link-active">
+  文章
+</a></div><div class="nav-item"><a href="/blogs/2020-10-10-axios-mock-adapter/.html" class="nav-link">
+  开源项目
+</a></div><div class="nav-item"><a href="/website/join/" class="nav-link">
+  加入我们
+</a></div><div class="nav-item"><a href="http://www.trs.com.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  拓尔思官网
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>通过axios-mock-adapter做接口模拟</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/2020-10-10-axios-mock-adapter/#通过axios-mock-adapter做接口模拟" class="sidebar-link">通过axios-mock-adapter做接口模拟</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="通过axios-mock-adapter做接口模拟"><a href="#通过axios-mock-adapter做接口模拟" class="header-anchor">#</a> 通过axios-mock-adapter做接口模拟</h2> <p>对于模拟数据来说，我们尝试过多方案，比如：<code>easy-mock</code>、本地化mock等，这次要介绍的一种更近似与实际工作的工具：<code>axios-mock-adapter</code>。</p> <blockquote><p>顾名思义，该工具是与平时用到最多的 <code>axios</code> 库配套使用的，这个库可模拟基本的get、post请求、带参数的get请求、低级别的网络错误、网络超时、重定向等等功能。这个库只会拦截由 <code>axios</code> 发出的请求，并且不影响已经存在的真实接口，只拦截我们在工程中配置的接口。</p></blockquote> <p>由于现在是由前端团队来规定接口返回，当前端定义好接口并且与后端对接口均无异议后，后端进入开发但并未接口时，前端可以使用这个工具进行接口模拟开发，达到前后端平行开发的目的，减少等待时间，例如：</p> <div class="language-js extra-class"><div class="highlight-lines"><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-js"><code><span class="token comment">// 导入模块</span>
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> MockAdapter <span class="token keyword">from</span> <span class="token string">'axios-mock-adapter'</span><span class="token punctuation">;</span>
+<span class="token comment">// 设置模拟调试器实例</span>
+<span class="token keyword">var</span> mock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MockAdapter</span><span class="token punctuation">(</span>axios<span class="token punctuation">,</span> <span class="token punctuation">{</span> onNoMatch<span class="token operator">:</span> <span class="token string">'passthrough'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 原有接口不被影响</span>
+<span class="token comment">// 模拟任意GET请求到 /users</span>
+<span class="token comment">// reply的参数为 (status, data, headers)</span>
+mock<span class="token punctuation">.</span><span class="token function">onGet</span><span class="token punctuation">(</span><span class="token string">'/media/sta.do'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> method<span class="token operator">:</span> <span class="token string">'getAllTypeSta'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reply</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token string">'msg'</span><span class="token operator">:</span> <span class="token string">'获取数据成功'</span><span class="token punctuation">,</span>
+  <span class="token string">'code'</span><span class="token operator">:</span> <span class="token string">'200'</span><span class="token punctuation">,</span>
+  <span class="token string">'datas'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'totalcount'</span><span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token comment">// 账号总数</span>
+    <span class="token string">'applicationtotal'</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token comment">// 开设账号总数</span>
+    <span class="token string">'closetotal'</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token comment">// 变更账号总数</span>
+    <span class="token string">'changetotal'</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token comment">// 关停账号总数</span>
+    <span class="token string">'allmediasta'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">'type'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 账号类型 1微信</span>
+        <span class="token string">'name'</span><span class="token operator">:</span> <span class="token string">'微信公众号'</span><span class="token punctuation">,</span>
+        <span class="token string">'application'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 开设账号总数</span>
+        <span class="token string">'change'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 变更账号总数</span>
+        <span class="token string">'close'</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token comment">// 关停账号总数</span>
+
+
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">'type'</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token string">'name'</span><span class="token operator">:</span> <span class="token string">'新浪微博'</span><span class="token punctuation">,</span>
+        <span class="token string">'application'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">'change'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">'close'</span><span class="token operator">:</span> <span class="token number">0</span>
+
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>这是我们定义的一个普通get请求，返回的字段与格式均与真实接口并无差异，现在我们来调用一下这个方法：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token punctuation">{</span>
+        method<span class="token operator">:</span> <span class="token string">'testGetAllTypeSta'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/media/sta.do'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> params<span class="token operator">:</span> params <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>通过上面的调用方式可以看出，与平时我们调用真实接口的方式并无差距，当真实接口开发出来后，我们只需要修改请求的方法名即可。把 <code>testGetAllTypeSta</code> 更换为 <code>getAllTypeSta</code> 后，其他并不需要修改任何逻辑。</p> <div class="custom-block warning"><p class="custom-block-title">WARNING</p> <p>存疑点：现在想到区分真实接口跟模拟接口的方式是给模拟方法加上test前缀，当真实接口部署后只要去掉前缀即可，希望后面大家有更好的方法作为区分。</p></div> <p><a href="https://wiki.trscd.com.cn/pages/viewpage.action?pageId=70418532" target="_blank" rel="noopener noreferrer">原文链接<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">1/20/2021, 10:53:19 AM</span></div></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.9c141345.js" defer></script><script src="/assets/js/2.6a03cd93.js" defer></script><script src="/assets/js/11.db3369d9.js" defer></script>
+  </body>
+</html>
